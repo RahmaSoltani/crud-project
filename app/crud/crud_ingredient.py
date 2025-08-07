@@ -27,11 +27,9 @@ def update(db: Session, ingredient_id: int, ingredient: IngredientUpdate):
 def delete(db: Session, ingredient_id: int):
     db_item = get_by_id(db, ingredient_id)
     if db_item:
-        # Unlink from all associated recipes
         db_item.recipes.clear()
         db.commit()
 
-        # Now delete the ingredient itself
         db.delete(db_item)
         db.commit()
     return db_item

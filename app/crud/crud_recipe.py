@@ -15,7 +15,7 @@ def create(db: Session, recipe: RecipeCreate):
     db.commit()
     db.refresh(db_recipe)
 
-    # Link ingredients (many-to-many)
+    # many-to-many
     db_recipe.ingredients = db.query(Ingredient).filter(Ingredient.id.in_(recipe.ingredient_ids)).all()
     db.commit()
     return db_recipe
