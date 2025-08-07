@@ -1,0 +1,74 @@
+RECIPE API - JSON STRUCTURE GUIDE
+
+=== INGREDIENT TYPES ===
+
+CREATE: POST /ingredient-types/
+{
+    "name": "Vegetables"
+}
+
+UPDATE: PUT /ingredient-types/{id}
+{
+    "name": "Updated Name"
+}
+
+=== INGREDIENTS ===
+
+CREATE: POST /ingredients/
+{
+    "name": "Tomatoes",
+    "ingredient_type_id": 2
+}
+
+UPDATE: PUT /ingredients/{id}
+{
+    "name": "Cherry Tomatoes",          // optional
+    "ingredient_type_id": 3             // optional
+}
+
+=== RECIPES ===
+
+CREATE: POST /recipes/
+{
+    "name": "Spaghetti Bolognese",
+    "instructions": "Cook pasta...",    // optional
+    "ingredient_ids": [1, 2, 3, 5]     // optional
+}
+
+UPDATE: PUT /recipes/{id}
+{
+    "name": "Updated Recipe",           // optional
+    "instructions": "New steps...",     // optional
+    "ingredient_ids": [1, 2, 4]        // optional
+}
+
+=== RESPONSES ===
+
+SUCCESS:
+{
+    "id": 1,
+    "name": "Item Name"
+}
+
+DELETE SUCCESS:
+{
+    "detail": "Deleted successfully"
+}
+
+ERROR 404:
+{
+    "detail": "Item not found"
+}
+
+=== WORKFLOW ===
+
+1. Create ingredient types first
+2. Create ingredients (need ingredient_type_id)
+3. Create recipes (use ingredient IDs)
+4. Use GET /endpoint/ to check IDs
+
+=== REQUIRED FIELDS ===
+
+ingredient-types: name
+ingredients: name, ingredient_type_id  
+recipes: name only
