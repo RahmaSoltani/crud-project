@@ -1,12 +1,15 @@
-__pycache__/
-**/__pycache__/
-*.py[cod]
-*$py.class
-
-venv/
-.venv/
-**/__init__.py/
-
 
 .vscode/
 .idea/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.pytest_cache/
+.mypy_cache/
+.idea/
+.vscode/
+*.db
+alembic/versions/*.py
